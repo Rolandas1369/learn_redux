@@ -132,7 +132,7 @@ const bindActionCreator = (creator, dispatch) => (...args) => {
 // above is full version
 
 // incDispatch becomes => inc and so one
-const { inc, dec, rnd } = bindActionCreators(actions, dispatch);
+const { inc, dec, rnd, div } = bindActionCreators(actions, dispatch);
 
 const without_action = () => {
   // more readabilyti
@@ -167,6 +167,7 @@ const update = () => {
       counter={store.getState()}
       inc={inc}
       dec={dec}
+      div={div}
       rnd={() => {
         const value = Math.floor(Math.random() * 10);
         const value1 = Math.floor(Math.random() * 10);

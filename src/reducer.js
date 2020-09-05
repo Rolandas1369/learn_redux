@@ -24,6 +24,8 @@ const reducer = (state = 0, action) => {
       case "RND":
         console.log('from reducer RND', action.payload, action.payload1)
         return state + action.payload + action.payload1;
+      case "DIV":
+        return state / 2
       default:
         return state;
     }

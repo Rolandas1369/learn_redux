@@ -2,3 +2,4 @@
 export const inc = () => ({type: 'INC'});
 export const dec = () => ({type: 'DEC'});
 export const rnd = (payload, payload1) => ({type: 'RND', payload, payload1});
+export const div = () => ({type: 'DIV'});

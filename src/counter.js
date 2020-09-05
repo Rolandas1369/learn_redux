@@ -1,6 +1,6 @@
 import React from "react";
 
-const Counter = ({ counter, inc, dec, rnd }) => {
+const Counter = ({ counter, inc, dec, rnd, div }) => {
   return (
     <div className="jumbotron">
       <h2 id="counter">{counter}</h2>
@@ -12,6 +12,9 @@ const Counter = ({ counter, inc, dec, rnd }) => {
       </button>
       <button onClick={rnd} id="rnd" className="btn btn-primary btn-lg">
         RAND
+      </button>
+      <button onClick={div} id="div" className="btn btn-primary btn-lg">
+        DIV
       </button>
     </div>
   );
