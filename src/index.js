@@ -1,11 +1,14 @@
-import { createStore, bindActionCreators } from "redux";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 import reducer from "./reducer";
+import App from './components/app'
+
 // import { inc, dec, rnd } from './actions'
 // is same as above
 import React from "react";
 import ReactDom from "react-dom";
-import * as actions from "./actions";
-import Counter from "./counter";
+// import * as actions from "./actions";
+import Counter from "./components/counter";
 console.log("ok");
 
 // moving reducer and actions to another different files
@@ -115,7 +118,7 @@ const actions_in_one_file = () => {
   store.subscribe(update);
 };
 // destructure dispach
-const { dispatch } = store;
+// const { dispatch } = store;
 
 // example of action creator
 const bindActionCreator = (creator, dispatch) => (...args) => {
@@ -132,14 +135,14 @@ const bindActionCreator = (creator, dispatch) => (...args) => {
 // above is full version
 
 // incDispatch becomes => inc and so one
-const { inc, dec, rnd, div } = bindActionCreators(actions, dispatch);
+// const { inc, dec, rnd, div } = bindActionCreators(actions, dispatch);
 
-const without_action = () => {
-  // more readabilyti
-  const incDispatch = () => dispatch(inc());
-  const decDispatch = () => dispatch(dec());
-  const rndDispatch = (payload, payload1) => dispatch(rnd(payload, payload1));
-};
+// const without_action = () => {
+//   // more readabilyti
+//   const incDispatch = () => dispatch(inc());
+//   const decDispatch = () => dispatch(dec());
+//   const rndDispatch = (payload, payload1) => dispatch(rnd(payload, payload1));
+// };
 
 // // below function replace incDispatch to inc ...
 // document.getElementById("inc").addEventListener("click", inc);
@@ -157,28 +160,21 @@ const without_action = () => {
 //   rnd(payload, payload1);
 // });
 
-const update = () => {
+// const update = () => {
   // select counter text number
   // let x = document.getElementById('counter').innerHTML = store.getState();
   // console.log('update function', x)
 
+  // provider works as context api
   ReactDom.render(
-    <Counter
-      counter={store.getState()}
-      inc={inc}
-      dec={dec}
-      div={div}
-      rnd={() => {
-        const value = Math.floor(Math.random() * 10);
-        const value1 = Math.floor(Math.random() * 10);
-        rnd(value, value1);
-      }}
-    />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.getElementById("root")
   );
-};
+// };
 
 // fires function update then click button in clicked
 // subscribe add sunction to store
-update();
-store.subscribe(update);
+// update();
+// store.subscribe(update);

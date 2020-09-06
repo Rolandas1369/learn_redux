@@ -7,7 +7,7 @@
 
 // action is setState analog
 // state = 0 becouse we need to set value if state is undefiend
-const reducer = (state = 0, action) => {
+const reducer = (state = 14, action) => {
     // if (action.type === "INC") {
     //   return state + 1;
     // }
